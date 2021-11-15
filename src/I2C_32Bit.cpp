@@ -1,6 +1,10 @@
 
 #include <I2C_32Bit.h>
 
+void I2C_32Bit_begin() {
+	Wire.begin();
+}
+
 uint32_t I2C_32Bit_readFromModule(uint8_t i2cAddr) {
 	uint8_t byteCount = 4;
 
@@ -9,10 +13,10 @@ uint32_t I2C_32Bit_readFromModule(uint8_t i2cAddr) {
 	Wire.requestFrom(i2cAddr, byteCount);
 
 	if (Wire.available()) {
-		uint8_t firstByte = Wire.read();
-		uint8_t secondByte = Wire.read();
-		uint8_t thirdByte = Wire.read();
-		uint8_t fourthByte = Wire.read();
+		uint32_t firstByte = Wire.read();
+		uint32_t secondByte = Wire.read();
+		uint32_t thirdByte = Wire.read();
+		uint32_t fourthByte = Wire.read();
 
 		return (firstByte << 24) + (secondByte << 16) + (thirdByte << 8) + fourthByte;
 	}
@@ -29,10 +33,10 @@ uint32_t I2C_32Bit_readFromModule(uint8_t i2cAddr, uint8_t registerAddr) {
 	Wire.requestFrom(i2cAddr, byteCount);
 
 	if (Wire.available()) {
-		uint8_t firstByte = Wire.read();
-		uint8_t secondByte = Wire.read();
-		uint8_t thirdByte = Wire.read();
-		uint8_t fourthByte = Wire.read();
+		uint32_t firstByte = Wire.read();
+		uint32_t secondByte = Wire.read();
+		uint32_t thirdByte = Wire.read();
+		uint32_t fourthByte = Wire.read();
 
 		return (firstByte << 24) + (secondByte << 16) + (thirdByte << 8) + fourthByte;
 	}

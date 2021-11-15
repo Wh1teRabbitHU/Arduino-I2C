@@ -7,7 +7,9 @@
 // Your register address, which can be found on your IC's datasheet
 #define DATA_REGISTER_ADDR 0x12
 
-void setup() {}
+void setup() {
+	I2C_16Bit_begin();
+}
 
 uint16_t counter = 0;
 

@@ -1,6 +1,9 @@
 
 #include <I2C_8Bit.h>
 
+void I2C_8Bit_begin() {
+	Wire.begin();
+}
 
 uint8_t I2C_8Bit_readFromModule(uint8_t i2cAddr) {
 	uint8_t byteCount = 1;

@@ -6,6 +6,8 @@
 
 #define GET_BIT_VALUE(binary, pos) (((binary >> pos) & 1) == 1 ? 1 : 0)
 
+void I2C_16Bit_begin();
+
 uint16_t I2C_16Bit_readFromModule(uint8_t i2cAddr);
 uint16_t I2C_16Bit_readFromModule(uint8_t i2cAddr, uint8_t registerAddr);
 void I2C_16Bit_writeToModule(uint8_t i2cAddr, uint16_t data);

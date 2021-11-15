@@ -1,6 +1,9 @@
 
 #include <I2C_16Bit.h>
 
+void I2C_16Bit_begin() {
+	Wire.begin();
+}
 
 uint16_t I2C_16Bit_readFromModule(uint8_t i2cAddr) {
 	uint8_t byteCount = 2;
@@ -10,8 +13,8 @@ uint16_t I2C_16Bit_readFromModule(uint8_t i2cAddr) {
 	Wire.requestFrom(i2cAddr, byteCount);
 
 	if (Wire.available()) {
-		uint8_t firstByte = Wire.read();
-		uint8_t secondByte = Wire.read();
+		uint16_t firstByte = Wire.read();
+		uint16_t secondByte = Wire.read();
 
 		return (firstByte << 8) + secondByte;
 	}
@@ -28,8 +31,8 @@ uint16_t I2C_16Bit_readFromModule(uint8_t i2cAddr, uint8_t registerAddr) {
 	Wire.requestFrom(i2cAddr, byteCount);
 
 	if (Wire.available()) {
-		uint8_t firstByte = Wire.read();
-		uint8_t secondByte = Wire.read();
+		uint16_t firstByte = Wire.read();
+		uint16_t secondByte = Wire.read();
 
 		return (firstByte << 8) + secondByte;
 	}

@@ -8,7 +8,9 @@
 #define DATA_REGISTER_ADDR 0x12
 #define ENABLED_FLAG_POS 3
 
-void setup() {}
+void setup() {
+	I2C_16Bit_begin();
+}
 
 uint8_t isEnabled = 0;
 

@@ -10,6 +10,8 @@
 
 void setup() {
 	Serial.begin(9600);
+
+	I2C_16Bit_begin();
 }
 
 void loop() {
