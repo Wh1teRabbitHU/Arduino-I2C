@@ -23,11 +23,17 @@ The following functions are available in every variant with the same name, the a
 
 __Full signatures:__
 - uint8_t I2C_8Bit_readFromModule(uint8_t i2cAddr);
+- uint8_t I2C_8Bit_readFromModule(TwoWire &wire, uint8_t i2cAddr);
 - uint16_t I2C_16Bit_readFromModule(uint8_t i2cAddr);
+- uint16_t I2C_16Bit_readFromModule(TwoWire &wire, uint8_t i2cAddr);
 - uint32_t I2C_32Bit_readFromModule(uint8_t i2cAddr);
+- uint32_t I2C_32Bit_readFromModule(TwoWire &wire, uint8_t i2cAddr);
 - uint8_t I2C_8Bit_readFromModule(uint8_t i2cAddr, uint8_t registerAddr);
+- uint8_t I2C_8Bit_readFromModule(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr);
 - uint16_t I2C_16Bit_readFromModule(uint8_t i2cAddr, uint8_t registerAddr);
+- uint16_t I2C_16Bit_readFromModule(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr);
 - uint32_t I2C_32Bit_readFromModule(uint8_t i2cAddr, uint8_t registerAddr);
+- uint32_t I2C_32Bit_readFromModule(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr);
 
 These methods are reading a register value from the target slave device. If the data is unavailable or something went wrong with the addressing, this method will return with 0. The provided register address points to the target register. The methods without register address are special version of the same implementation, because some ICs need no register addressing. The return type depends on the variation and it returns the full content of the target register, without consumption.
 
@@ -35,11 +41,17 @@ These methods are reading a register value from the target slave device. If the 
 
 __Full signatures:__
 - void I2C_8Bit_writeToModule(uint8_t i2cAddr, uint8_t data);
+- void I2C_8Bit_writeToModule(TwoWire &wire, uint8_t i2cAddr, uint8_t data);
 - void I2C_16Bit_writeToModule(uint8_t i2cAddr, uint16_t data);
+- void I2C_16Bit_writeToModule(TwoWire &wire, uint8_t i2cAddr, uint16_t data);
 - void I2C_32Bit_writeToModule(uint8_t i2cAddr, uint32_t data);
+- void I2C_32Bit_writeToModule(TwoWire &wire, uint8_t i2cAddr, uint32_t data);
 - void I2C_8Bit_writeToModule(uint8_t i2cAddr, uint8_t registerAddr, uint8_t data);
+- void I2C_8Bit_writeToModule(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint8_t data);
 - void I2C_16Bit_writeToModule(uint8_t i2cAddr, uint8_t registerAddr, uint16_t data);
+- void I2C_16Bit_writeToModule(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint16_t data);
 - void I2C_32Bit_writeToModule(uint8_t i2cAddr, uint8_t registerAddr, uint32_t data);
+- void I2C_32Bit_writeToModule(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint32_t data);
 
 These methods are writing into a register to a target slave device. The provided register address points to the target register. The methods without register address are special version of the same implementation, because some ICs need no register addressing. The input data parameter will be written into the target register without any modification or truncation. If the register contains more than one unique data, you have to take care of that. (The read/write flag methods can help with that, more details below)
 
@@ -47,11 +59,17 @@ These methods are writing into a register to a target slave device. The provided
 
 __Full signatures:__
 - uint8_t I2C_8Bit_readFlag(uint8_t i2cAddr, uint8_t pos);
+- uint8_t I2C_8Bit_readFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t pos);
 - uint8_t I2C_16Bit_readFlag(uint8_t i2cAddr, uint8_t pos);
+- uint8_t I2C_16Bit_readFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t pos);
 - uint8_t I2C_32Bit_readFlag(uint8_t i2cAddr, uint8_t pos);
+- uint8_t I2C_32Bit_readFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t pos);
 - uint8_t I2C_8Bit_readFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos);
+- uint8_t I2C_8Bit_readFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos);
 - uint8_t I2C_16Bit_readFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos);
+- uint8_t I2C_16Bit_readFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos);
 - uint8_t I2C_32Bit_readFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos);
+- uint8_t I2C_32Bit_readFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos);
 
 This method will only read one bit of data from the provided register address from the provided bit position. The methods without register address are special version of the same implementation, because some ICs need no register addressing. The return value is always one bit, which can be used as a 'boolean' data type.
 
@@ -59,11 +77,17 @@ This method will only read one bit of data from the provided register address fr
 
 __Full signatures:__
 - void I2C_8Bit_writeFlag(uint8_t i2cAddr, uint8_t pos, uint8_t value);
-- void I2C_8Bit_writeFlag(uint8_t i2cAddr, uint8_t pos, uint8_t value);
-- void I2C_8Bit_writeFlag(uint8_t i2cAddr, uint8_t pos, uint8_t value);
+- void I2C_8Bit_writeFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t pos, uint8_t value);
+- void I2C_16Bit_writeFlag(uint8_t i2cAddr, uint8_t pos, uint8_t value);
+- void I2C_16Bit_writeFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t pos, uint8_t value);
+- void I2C_32Bit_writeFlag(uint8_t i2cAddr, uint8_t pos, uint8_t value);
+- void I2C_32Bit_writeFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t pos, uint8_t value);
 - void I2C_8Bit_writeFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
-- void I2C_8Bit_writeFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
-- void I2C_8Bit_writeFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
+- void I2C_8Bit_writeFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
+- void I2C_16Bit_writeFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
+- void I2C_16Bit_writeFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
+- void I2C_32Bit_writeFlag(uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
+- void I2C_32Bit_writeFlag(TwoWire &wire, uint8_t i2cAddr, uint8_t registerAddr, uint8_t pos, uint8_t value);
 
 This method writes only one bit in the target slave device on the provided register address. The methods without register address are special version of the same implementation, because some ICs need no register addressing. The provided value should be a binary type, using any other values might cause unexpected behaviour. (It will always clear the flag if the provided value is larger than 1 bit) To change a flag on the target device, the library has to read the full register value and after manipulating it, writing back to the device. If the IC relies on the write operation, it should be considered before using this method.
 
@@ -71,8 +95,8 @@ This method writes only one bit in the target slave device on the provided regis
 
 __Full signatures:__
 - uint8_t I2C_8Bit_setBinary(uint8_t binary, uint8_t pos, uint8_t flagVal);
-- uint16_t I2C_8Bit_setBinary(uint16_t binary, uint8_t pos, uint8_t flagVal);
-- uint32_t I2C_8Bit_setBinary(uint32_t binary, uint8_t pos, uint8_t flagVal);
+- uint16_t I2C_16Bit_setBinary(uint16_t binary, uint8_t pos, uint8_t flagVal);
+- uint32_t I2C_32Bit_setBinary(uint32_t binary, uint8_t pos, uint8_t flagVal);
 
 This is a util method which can help with changing a flag's value in a registry value. It will ony change the bit on the given position, so it's ideal to change multiple flags at once. The return value is the updated register value. Important to note, that tthis method will not communicate with the device, the changes are local and only visible on the return value.
 
